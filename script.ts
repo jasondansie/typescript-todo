@@ -1,26 +1,26 @@
 // grab dom elements and store in JS variables
-const form = document.querySelector('form');
-const ul = document.querySelector('ul');
-const button = document.querySelector('button');
-const input = document.getElementById('item');
-const notes = document.querySelector(".notes");
+const form = document.querySelector('form')! as HTMLFormElement;
+const ul: HTMLUListElement |null = document.querySelector('ul');
+const button = document.querySelector('button')! as HTMLInputElement;
+const input = document.getElementById('item')! as HTMLInputElement;
+const notes = document.querySelector('.notes')!;
+
 
 // using ternary
-let itemsArray = localStorage.getItem('items')
- ? JSON.parse(localStorage.getItem('items'))
- : [];
+let itemsArray: string[] = JSON.parse(localStorage.getItem('items')!) || [];
+
 localStorage.setItem('items', JSON.stringify(itemsArray));
-const notesArray = JSON.parse(localStorage.getItem('items'));
+const notesArray: string[] = JSON.parse(localStorage.getItem('items')!) || [];
 
 // list of items and append to html
 const liMaker = () => {
-    const item = notesArray.map((note) => {
+    const item: string = notesArray.map((note: string) => {
         return `
         <div class="note">${note}</div>
-        `
+        `;
     }).join('');
-    notes.innerHTML = item; 
-}
+    notes.innerHTML = item;
+};
 
 // add event listener for the form, submit
 form.addEventListener('submit', function (e) {
