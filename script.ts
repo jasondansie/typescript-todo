@@ -1,6 +1,5 @@
 // grab dom elements and store in JS variables
-const form = document.querySelector('form')! as HTMLFormElement;
-const ul: HTMLUListElement |null = document.querySelector('ul');
+const form: HTMLFormElement | null = document.querySelector('form')!;
 const button = document.querySelector('button')! as HTMLInputElement;
 const input = document.getElementById('item')! as HTMLInputElement;
 const notes = document.querySelector('.notes')!;

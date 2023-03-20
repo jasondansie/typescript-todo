@@ -1,17 +1,19 @@
+"use strict";
 // grab dom elements and store in JS variables
-var form = document.querySelector('form');
-var ul = document.querySelector('ul');
-var button = document.querySelector('button');
-var input = document.getElementById('item');
-var notes = document.querySelector('.notes');
+const form = document.querySelector('form');
+const button = document.querySelector('button');
+const input = document.getElementById('item');
+const notes = document.querySelector('.notes');
 // using ternary
-var itemsArray = JSON.parse(localStorage.getItem('items')) || [];
+let itemsArray = JSON.parse(localStorage.getItem('items')) || [];
 localStorage.setItem('items', JSON.stringify(itemsArray));
-var notesArray = JSON.parse(localStorage.getItem('items')) || [];
+const notesArray = JSON.parse(localStorage.getItem('items')) || [];
 // list of items and append to html
-var liMaker = function () {
-    var item = notesArray.map(function (note) {
-        return "\n        <div class=\"note\">".concat(note, "</div>\n        ");
+const liMaker = () => {
+    const item = notesArray.map((note) => {
+        return `
+        <div class="note">${note}</div>
+        `;
     }).join('');
     notes.innerHTML = item;
 };
